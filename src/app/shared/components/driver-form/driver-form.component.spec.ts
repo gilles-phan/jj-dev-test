@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DriverFormComponent } from './driver-form.component';
 
 describe('DriverFormComponent', () => {
@@ -8,9 +10,13 @@ describe('DriverFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DriverFormComponent]
-    })
-    .compileComponents();
+      declarations: [DriverFormComponent],
+      imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DriverFormComponent);
     component = fixture.componentInstance;
