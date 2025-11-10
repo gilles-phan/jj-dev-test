@@ -29,7 +29,7 @@ Créez les interfaces TypeScript pour :
 
 ---
 
-## **PARTIE 3 - CVA Simple**
+## ✅ **PARTIE 3 - CVA Simple**
 Créez un `fuel-type-control.component.ts` qui :
 - Implémente **ControlValueAccessor ET Validator**
 - Utilise Material `mat-select` pour les types de carburant
