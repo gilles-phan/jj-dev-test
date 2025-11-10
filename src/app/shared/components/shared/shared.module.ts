@@ -4,6 +4,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -12,13 +13,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatInputModule,
   ],
   exports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatInputModule
   ],
 
 })
