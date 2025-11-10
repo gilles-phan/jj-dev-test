@@ -1,54 +1,27 @@
-<div class="driver-form-grid">
-    <form [formGroup]="form" class="license-form-container">
-
-        <mat-form-field appearance="outline" class="firstName">
-            <mat-label>Prénom</mat-label>
-            <input type="text" matInput formControlName="firstName" />
-            @if (form.get('firstName')?.hasError('required')) {
-            <mat-error>Le prénom est obligatoire</mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="lastName">
-            <mat-label>Nom</mat-label>
-            <input type="text" matInput formControlName="lastName" />
-            @if (form.get('lastName')?.hasError('required')) {
-            <mat-error>Le nom est obligatoire</mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="licenseNumber">
-            <mat-label>Numéro de permis</mat-label>
-            <input type="text" matInput formControlName="licenseNumber" (input)="onLicenseChange($event)"
-                style="text-transform: uppercase;" />
-            @if (form.get('licenseNumber')?.hasError('required')) {
-            <mat-error>Le numéro de permis est obligatoire</mat-error>
-            }
-            @if (form.get('licenseNumber')?.hasError('invalidLicenseNumber')) {
-            <mat-error>Format invalide (ex. AA98765432109)</mat-error>
-            }
-        </mat-form-field>
-    </form>
-
-    <!-- <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstName" />
-        <mat-error *ngIf="form.get('firstName')?.hasError('required')">
-            First Name is required
-        </mat-error>
+<form [formGroup]="form" class="driver-form-grid">
+    <mat-form-field appearance="outline" class="firstName">
+        <mat-label>Prénom</mat-label>
+        <input type="text" matInput formControlName="firstName" />
+        @if (form.get('firstName')?.hasError('required')) {
+        <mat-error>Le prénom est obligatoire</mat-error>
+        }
     </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="lastName" />
-        <mat-error *ngIf="form.get('lastName')?.hasError('required')">
-            Last Name is required
-        </mat-error>
+    <mat-form-field appearance="outline" class="lastName">
+        <mat-label>Nom</mat-label>
+        <input type="text" matInput formControlName="lastName" />
+        @if (form.get('lastName')?.hasError('required')) {
+        <mat-error>Le nom est obligatoire</mat-error>
+        }
     </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>License Number</mat-label>
-        <input matInput formControlName="licenseNumber" />
-        <mat-error *ngIf="form.get('licenseNumber')?.hasError('required')">
-            License Number is required
-        </mat-error>
-    </mat-form-field> -->
-</div>
+    <mat-form-field appearance="outline" class="licenseNumber">
+        <mat-label>Numéro de permis</mat-label>
+        <input type="text" matInput formControlName="licenseNumber" (input)="onLicenseChange($event)"
+            style="text-transform: uppercase;" />
+        @if (form.get('licenseNumber')?.hasError('required')) {
+        <mat-error>Le numéro de permis est obligatoire</mat-error>
+        }
+        @if (form.get('licenseNumber')?.hasError('invalidLicenseNumber')) {
+        <mat-error>Format invalide (ex. AA98765432109)</mat-error>
+        }
+    </mat-form-field>
+</form>

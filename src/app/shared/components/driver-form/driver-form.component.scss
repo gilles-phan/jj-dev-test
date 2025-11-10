@@ -1,0 +1,25 @@
+.driver-form-grid {
+    display: grid;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+        gap: 0px;
+    }
+
+    @media only screen and (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px 16px;
+
+        .licenseNumber {
+            grid-column: span 2;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+
+        .licenseNumber {
+            grid-column: span 1;
+        }
+    }
+}

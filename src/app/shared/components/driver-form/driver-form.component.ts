@@ -59,6 +59,7 @@ export class DriverFormComponent implements ControlValueAccessor, Validator {
 
   /**
    * Converts license number input to uppercase on change, to prevent validation errors.
+   *
    * @param event 
    */
   onLicenseChange(event: Event): void {
