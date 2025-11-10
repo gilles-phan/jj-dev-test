@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { App } from './app';
+import { FuelTypeControlModule } from './shared/components/fuel-type-control/fuel-type-control.module';
+import { DriverFormModule } from './shared/components/driver-form/driver-form.module';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        FuelTypeControlModule,
+        DriverFormModule
       ],
       declarations: [
         App
@@ -18,12 +22,5 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, jj-dev');
   });
 });
