@@ -36,7 +36,7 @@ Créez un `fuel-type-control.component.ts` qui :
 
 ---
 
-## **PARTIE 4 - CVA Formulaire**
+## ✅ **PARTIE 4 - CVA Formulaire**
 Créez un `driver-form.component.ts` qui :
 - CVA multi-inputs avec FormGroup interne typé
 - 3 champs : firstName, lastName, licenseNumber
