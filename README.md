@@ -12,7 +12,7 @@ Créez une application de gestion de véhicules avec les patterns architecturaux
 
 ---
 
-## 🤖🤖🤖 **PARTIE 1 - Setup & Architecture**
+## ✅ **PARTIE 1 - Setup & Architecture**
 Initialisez un projet Angular avec :
 - Structure modulaire (core/, shared/, modules/)
 - Angular Material + **AG Grid Community**
