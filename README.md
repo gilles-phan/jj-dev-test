@@ -21,7 +21,7 @@ Initialisez un projet Angular avec :
 
 ---
 
-## **PARTIE 2 - Modèles**
+## ✅ **PARTIE 2 - Modèles**
 Créez les interfaces TypeScript pour :
 - `Vehicle` (id, licensePlate, brand, model, year, fuelType, capacity, isActive, driver?, maintenanceDate?)
 - `Driver` (id, firstName, lastName, licenseNumber)
