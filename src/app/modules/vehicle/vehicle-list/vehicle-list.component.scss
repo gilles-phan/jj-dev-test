@@ -1,0 +1,28 @@
+.vehicle-list {
+  .header-grid {
+    display: grid;
+
+    .search {
+      flex: 1;
+    }
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 0px;
+    }
+
+    @media only screen and (min-width: 600px) {
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+
+      button {
+        height: 56px; // 🤢
+      }
+    }
+
+
+
+  }
+
+
+}
