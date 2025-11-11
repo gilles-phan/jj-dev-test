@@ -24,7 +24,7 @@ import { licenseNumberValidator } from '@app/shared/validators/license-number.va
 })
 export class DriverFormComponent implements ControlValueAccessor, Validator {
   form: FormGroup<DriverForm>;
-  onChange = (_: DriverForm) => { };
+  onChange: (_: DriverForm | null) => void = () => { };
   onTouched = () => { };
 
   constructor(private fb: FormBuilder) {
@@ -34,6 +34,13 @@ export class DriverFormComponent implements ControlValueAccessor, Validator {
       licenseNumber: this.fb.control<string>("", { nonNullable: true, validators: [Validators.required, licenseNumberValidator] }),
     });
   }
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(value => {
+      this.onChange(this.form.valid ? (value as unknown as DriverForm) : null);
+    });
+  }
+
   validate(control: AbstractControl): ValidationErrors | null {
     return this.form.valid ? null : { invalidForm: { valid: false, message: "Driver form is invalid" } }
   }
@@ -45,6 +52,8 @@ export class DriverFormComponent implements ControlValueAccessor, Validator {
         lastName: value.lastName,
         licenseNumber: value.licenseNumber,
       }, { emitEvent: false });
+    } else {
+      this.form.reset();
     }
   }
   registerOnChange(fn: any): void {

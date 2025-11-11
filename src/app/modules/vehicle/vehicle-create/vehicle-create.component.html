@@ -1,1 +1,13 @@
-<p>vehicle-create works!</p>
+<h2>Créer un véhicule</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="create-grid">
+  <!-- CVA #1: fuel -->
+  <app-fuel-type-control formControlName="fuelType" />
+
+  <!-- CVA #2: driver -->
+  <app-driver-form formControlName="driver" />
+
+  <div class="actions">
+    <button mat-flat-button color="primary" type="submit">Créer</button>
+  </div>
+</form>

@@ -1,10 +1,8 @@
 <mat-form-field appearance="outline">
     <mat-label>Carburant</mat-label>
-    <mat-select>
-        @for (type of fuelTypes; track type) {
-        <mat-option [value]="type">
+    <mat-select [value]="value" (selectionChange)="selectFuelType($event.value)" [disabled]="disabled">
+        <mat-option *ngFor="let type of fuelTypes" [value]="type">
             {{ type }}
         </mat-option>
-        }
     </mat-select>
 </mat-form-field>
