@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FuelTypeControlModule } from "./shared/components/fuel-type-control/fuel-type-control.module";
 import { DriverFormModule } from './shared/components/driver-form/driver-form.module';
+import { VehicleListModule } from './modules/vehicle/vehicle-list/vehicle-list.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DriverFormModule } from './shared/components/driver-form/driver-form.mo
     BrowserModule,
     AppRoutingModule,
     FuelTypeControlModule,
-    DriverFormModule
+    DriverFormModule,
+    VehicleListModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

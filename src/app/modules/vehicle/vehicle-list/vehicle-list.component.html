@@ -1,0 +1,14 @@
+<div class="vehicle-list">
+    <div class="header-grid">
+        <mat-form-field appearance="outline" class="search">
+            <mat-label>Rechercher un véhicule</mat-label>
+            <input matInput [formControl]="searchCtrl" placeholder="Ex: Renault, 208..." />
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="onAddMockVehicle()">+ Ajouter aléatoirement</button>
+    </div>
+
+    <ag-grid-angular class="ag-theme-alpine" style="width: 100%; height: 500px" [rowData]="filteredVehicles$ | async"
+        [columnDefs]="columnDefs" [domLayout]="'autoHeight'" (cellClicked)="onCellClicked($event)">
+    </ag-grid-angular>
+</div>

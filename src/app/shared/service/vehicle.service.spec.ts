@@ -78,10 +78,10 @@ describe('VehicleService', () => {
     expect(service.vehicles.length).toBe(0);
   }));
 
-  it('✅ should emit changes through $vehicles$', fakeAsync(() => {
+  it('✅ should emit changes through vehicles$', fakeAsync(() => {
     const emitted: Vehicle[][] = [];
 
-    const sub = service.$vehicles$.subscribe(list => emitted.push(list));
+    const sub = service.vehicles$.subscribe(list => emitted.push(list));
 
     service.addVehicle(mockVehicle1).subscribe();
     service.addVehicle(mockVehicle2).subscribe();

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Vehicle } from '@app/core/models';
-import { BehaviorSubject, delay, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, delay, map, Observable, of, tap } from 'rxjs';
 import { DELAY_MS } from '../utils/constant.utils';
+import { findByTerm } from '../utils/vehicle.utils';
 
 
 
@@ -10,8 +11,42 @@ import { DELAY_MS } from '../utils/constant.utils';
 })
 export class VehicleService {
   private vehiclesSubject = new BehaviorSubject<Array<Vehicle>>([]);
+  private searchSubject = new BehaviorSubject<string>("");
 
-  $vehicles$ = this.vehiclesSubject.asObservable();
+  vehicles$ = this.vehiclesSubject.asObservable();
+  search$ = this.searchSubject.asObservable();
+
+  filteredVehicles$ = combineLatest([this.vehicles$, this.search$]).pipe(
+    map(([vehicles, term]) => {
+      const formatedTerm = (term ?? '').trim().toLowerCase();
+      if (!formatedTerm) {
+        return vehicles;
+      }
+      return vehicles.filter(findByTerm(formatedTerm));
+    })
+  );
+
+  // ------ //
+  // Search //
+  // ------ //
+
+  /**
+   * Set the search term.
+   *
+   * @param term The search term.
+   */
+  setSearchTerm(term: string) {
+    this.searchSubject.next(term);
+  }
+
+  /**
+   * Update the search term.
+   *
+   * @param term The new search term.
+   */
+  updateSearchTerm(term: string): void {
+    this.setSearchTerm(term);
+  }
 
   // ------------ //
   // CRUD Vehicle //
