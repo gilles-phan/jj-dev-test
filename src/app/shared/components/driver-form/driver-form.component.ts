@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef } fro
 import { AbstractControl, ControlValueAccessor, Form, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { DriverForm } from '@app/core/models/driver-form.interface';
 import { licenseNumberValidator } from '@app/shared/validators/license-number.validator';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-driver-form',
@@ -23,6 +24,8 @@ import { licenseNumberValidator } from '@app/shared/validators/license-number.va
   ],
 })
 export class DriverFormComponent implements ControlValueAccessor, Validator {
+  private destroy$ = new Subject<void>();
+
   form: FormGroup<DriverForm>;
   onChange: (_: DriverForm | null) => void = () => { };
   onTouched = () => { };
@@ -36,9 +39,16 @@ export class DriverFormComponent implements ControlValueAccessor, Validator {
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(value => {
-      this.onChange(this.form.valid ? (value as unknown as DriverForm) : null);
-    });
+    this.form.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(value => {
+        this.onChange(this.form.valid ? (value as unknown as DriverForm) : null);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
