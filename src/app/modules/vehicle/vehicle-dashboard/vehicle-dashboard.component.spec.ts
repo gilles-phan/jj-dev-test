@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VehicleDashboardComponent } from './vehicle-dashboard.component';
+import { VehicleListModule } from '../vehicle-list/vehicle-list.module';
+import { VehicleCreateModule } from '../vehicle-create/vehicle-create.module';
 
 describe('VehicleDashboardComponent', () => {
   let component: VehicleDashboardComponent;
@@ -8,9 +10,13 @@ describe('VehicleDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VehicleDashboardComponent]
+      declarations: [VehicleDashboardComponent],
+      imports: [
+        VehicleCreateModule,
+        VehicleListModule,
+      ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(VehicleDashboardComponent);
     component = fixture.componentInstance;

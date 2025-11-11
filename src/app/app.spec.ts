@@ -1,18 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { App } from './app';
-import { FuelTypeControlModule } from './shared/components/fuel-type-control/fuel-type-control.module';
-import { DriverFormModule } from './shared/components/driver-form/driver-form.module';
-import { VehicleListModule } from './modules/vehicle/vehicle-list/vehicle-list.module';
+import { VehicleDashboardModule } from './modules/vehicle/vehicle-dashboard/vehicle-dashboard.module';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterModule.forRoot([]),
-        FuelTypeControlModule,
-        DriverFormModule,
-        VehicleListModule,
+        VehicleDashboardModule
       ],
       declarations: [
         App
