@@ -4,8 +4,10 @@
             <mat-label>Rechercher un véhicule</mat-label>
             <input matInput [formControl]="searchCtrl" placeholder="Ex: Renault, 208..." />
         </mat-form-field>
-
-        <button mat-flat-button color="primary" (click)="onAddMockVehicle()">+ Ajouter aléatoirement</button>
+        @if(showBtnAddRandomVehicle){
+        <button mat-flat-button color="primary" (click)="onAddMockVehicle()">+ Ajouter
+            aléatoirement</button>
+        }
     </div>
 
     <ag-grid-angular class="ag-theme-alpine" style="width: 100%; height: 500px" [rowData]="filteredVehicles$ | async"

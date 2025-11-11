@@ -1,5 +1,3 @@
-<h2>Créer un véhicule</h2>
-
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="create-grid">
   <!-- CVA #1: fuel -->
   <app-fuel-type-control formControlName="fuelType" />
@@ -8,6 +6,6 @@
   <app-driver-form formControlName="driver" />
 
   <div class="actions">
-    <button mat-flat-button color="primary" type="submit">Créer</button>
+    <button mat-flat-button color="primary" type="submit">Créer un véhicule</button>
   </div>
 </form>
