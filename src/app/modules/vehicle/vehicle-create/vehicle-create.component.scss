@@ -1,0 +1,61 @@
+.create-grid {
+    display: grid;
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: repeat(auto-fit, 1fr);
+        padding: 0px;
+
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    }
+
+    mat-form-field,
+    app-fuel-type-control,
+    app-driver-form {
+        width: 100%;
+    }
+
+
+
+    app-fuel-type-control {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    app-driver-form {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .actions {
+        grid-column: 1 / -1;
+        grid-row: 3;
+
+        button {
+            width: 100%;
+        }
+    }
+}

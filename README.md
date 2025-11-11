@@ -45,7 +45,7 @@ Créez un `driver-form.component.ts` qui :
 
 ---
 
-## **PARTIE 5 - RxJS Avancé**
+## ✅ **PARTIE 5 - RxJS Avancé**
 Implémentez `vehicle.service.ts` avec :
 - `BehaviorSubject` pour la liste complète des véhicules
 - **Filtrage réactif** : combinez la liste + terme de recherche à l'aide d'opérateur(s) rxjs

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { FuelType } from '@app/core/enums';
 
@@ -24,12 +24,20 @@ import { FuelType } from '@app/core/enums';
 export class FuelTypeControlComponent implements ControlValueAccessor, Validator {
   fuelTypes = Object.values(FuelType);
   value: FuelType | null = null;
-  onChange: any = () => { };
-  onTouched: any = () => { };
+  onChange = (_: FuelType | null) => { };
+  onTouched = () => { };
   disabled = false;
 
-  writeValue(value: any): void {
-    this.value = value;
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  writeValue(value: FuelType | null): void {
+    if (value === null) {
+      this.value = null;
+    } else {
+      this.value = value;
+    }
+
+    this.cdr.markForCheck();
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -39,19 +47,14 @@ export class FuelTypeControlComponent implements ControlValueAccessor, Validator
   }
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    this.cdr.markForCheck();
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
     return this.value ? null : { required: true };
   }
 
-  /**
-   * Select a fuel type.
-   *
-   * @param fuelType The fuel type to select.
-   * @returns void
-   */
-  selectFuelType(fuelType: FuelType) {
+  selectFuelType(fuelType: FuelType): void {
     if (this.disabled) {
       return;
     }
@@ -59,5 +62,4 @@ export class FuelTypeControlComponent implements ControlValueAccessor, Validator
     this.onChange(this.value);
     this.onTouched();
   }
-
 }

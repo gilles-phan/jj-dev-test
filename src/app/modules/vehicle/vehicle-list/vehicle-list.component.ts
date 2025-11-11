@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FuelType } from '@app/core/enums';
 import { Vehicle } from '@app/core/models';
@@ -16,6 +16,8 @@ import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VehicleListComponent {
+  @Input()
+  showBtnAddRandomVehicle = true;
   private destroy$ = new Subject<void>();
   searchCtrl = new FormControl('', { nonNullable: true });
 
